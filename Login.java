@@ -21,7 +21,7 @@ public class Login extends UI implements ActionListener, MouseListener, Runnable
 	Frame f1,f2;
 	newTextField tf1, tf2;
 	Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-	MemberMgr mgr = new MemberMgr();
+	FrogMgr mgr = new FrogMgr();
 	Tab1 tab1 = new Tab1(); //일정 
 	Tab2 tab2 = new Tab2(); //관리
 	Tab3 tab3 = new Tab3(); //직원
@@ -34,6 +34,7 @@ public class Login extends UI implements ActionListener, MouseListener, Runnable
 		talk = new newLabel("", 160, 20, 250, 70, 20, Color.white, "Meriyo UI");
 		frog = new newPanel("frog.png", 10,0, 118, 121);	
 		btn = new newPanel("btn.png", 250, 410, 100, 47);	
+		
 		p1 = new newPanel("login2.png",0,100,380,700);
 		p2 = new newPanel("loading.png",0,100,380,700);
 		p3 = new newPanel("main.png",0,100,380,700);
@@ -57,7 +58,7 @@ public class Login extends UI implements ActionListener, MouseListener, Runnable
 			p3.add(tabs[i]);
 		}
 		
-		tab1.setBounds(0, 0, 1235, 610);
+		tab1.setBounds(0, 0, 1235, 610); //사이즈
 		tab2.setBounds(0, 0, 1235, 610);
 		tab3.setBounds(0, 0, 1235, 610);
 		tab4.setBounds(0, 0, 1235, 610);
@@ -90,12 +91,12 @@ public class Login extends UI implements ActionListener, MouseListener, Runnable
 			command("talking:비밀번호를 입력해야해!");
 			tf2.requestFocus();
 		} else {
-			command("talking:로그인에 성공했어!");
-			command("loading:1");
-//			if(mgr.loginChk(tb1.getText().trim(),tb2.getText().trim())) {
-//			} else {
-//				command("talking:잘못된 정보야!");					
-//			}
+			if(mgr.loginChk(tf1.getText().trim(),tf2.getText().trim())) {
+				command("talking:로그인에 성공했어!");
+				command("loading:1");
+			} else {
+				command("talking:잘못된 정보야!");					
+			}
 		}		
 	}	
 	

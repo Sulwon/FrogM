@@ -7,11 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
-public class MemberMgr {
+public class FrogMgr {
 
 	static DBConnectionMgr pool;
 
-	public MemberMgr() {
+	public FrogMgr() {
 		pool = DBConnectionMgr.getInstance();
 	}
 
@@ -38,10 +38,15 @@ public class MemberMgr {
 		} finally {
 			pool.freeConnection(con, pstmt, rs);
 		}
+	System.out.println(flag);
 		return flag;
 	
 	}
-	public static void main(String[] args) {
+	public void selectData() {
 		
 	}
 }
+/*
+ * Classpath 설정 jdk or jre -> 기본클래스가 필요 현재 실행중인 class jvm인식 외부 클래스들 -> .jar 형식으로
+ * 압축
+ */
